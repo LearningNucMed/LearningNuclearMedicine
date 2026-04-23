@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporting Criteria | LearningNuclearMedicine.com</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0D1B2A;--teal:#00B4D8;--teal2:#0096B7;--white:#FFFFFF;--off:#F4F8FB;--slate:#1E3A52;--mid:#5A7A8E;--light:#D1DDE6;--border:#E2ECF2}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--slate);font-size:15px;line-height:1.6}
+.nav{background:var(--navy);padding:0 32px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.35)}
+.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#3D6178;text-decoration:none;margin-right:20px;padding:6px 10px;border-radius:6px;transition:color 0.15s;white-space:nowrap}
+.nav-back:hover{color:var(--teal)}
+.nav-divider{width:1px;height:20px;background:rgba(255,255,255,0.08);margin-right:20px}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:15px;color:var(--white);text-decoration:none;margin-right:28px;white-space:nowrap}
+.nav-logo span{color:var(--teal)}
+.nav-links{display:flex;list-style:none;gap:2px}
+.nav-links a{display:block;padding:8px 13px;font-size:12.5px;font-weight:500;color:#8BBFD4;text-decoration:none;border-radius:6px;white-space:nowrap;transition:background 0.15s,color 0.15s}
+.nav-links a:hover{background:rgba(255,255,255,0.08);color:var(--white)}
+.nav-links a.active{color:var(--teal);background:rgba(0,180,216,0.1)}
+.hero{background:var(--navy);padding:48px 56px 40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,216,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--white);font-weight:400;margin-bottom:10px}
+.hero-sub{font-size:14px;color:#7AABCC;max-width:600px;line-height:1.65;margin-bottom:24px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.hero-tag{background:rgba(0,180,216,0.1);border:1px solid rgba(0,180,216,0.2);color:var(--teal);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 12px;border-radius:100px}
+.jump-nav{background:var(--off);border-bottom:1px solid var(--border);padding:0 56px;display:flex;gap:0;overflow-x:auto;position:sticky;top:56px;z-index:100}
+.jump-nav a{display:block;padding:14px 18px;font-size:12.5px;font-weight:500;color:var(--mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s}
+.jump-nav a:hover,.jump-nav a.active{color:var(--teal);border-color:var(--teal)}
+.body-wrap{max-width:980px;margin:0 auto;padding:52px 32px 80px}
+.criteria-section{margin-bottom:56px}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:2px solid var(--teal)}
+.section-icon{width:40px;height:40px;border-radius:10px;background:rgba(0,180,216,0.1);border:1px solid rgba(0,180,216,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.section-title{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--slate);font-weight:400}
+.section-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:16px;max-width:700px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.criteria-card{background:var(--off);border:1.5px dashed var(--border);border-radius:10px;padding:22px}
+.card-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:0.15em;text-transform:uppercase;color:var(--light);margin-bottom:8px}
+.card-title{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--slate);margin-bottom:6px}
+.card-desc{font-size:12.5px;color:var(--mid);line-height:1.55;margin-bottom:10px}
+.card-chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-family:'Space Mono',monospace;font-size:8px;padding:2px 8px;border-radius:100px;background:rgba(0,180,216,0.06);color:var(--teal2);border:1px solid rgba(0,180,216,0.15)}
+.ref-card{background:var(--navy);border-radius:10px;padding:20px 24px;margin-top:12px;display:flex;align-items:center;gap:16px}
+.ref-body{flex:1}
+.ref-label{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#2A4A62;margin-bottom:4px}
+.ref-title{font-size:13px;color:var(--white);margin-bottom:2px;font-weight:500}
+.ref-source{font-size:11.5px;color:#3D6178}
+.ref-link{font-family:'Space Mono',monospace;font-size:9px;color:var(--teal);text-decoration:none;padding:5px 12px;border:1px solid rgba(0,180,216,0.25);border-radius:5px;white-space:nowrap;flex-shrink:0}
+.ref-link:hover{background:rgba(0,180,216,0.1)}
+.coming-banner{background:var(--off);border:1.5px dashed var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:flex;align-items:center;gap:16px}
+.coming-icon{font-size:28px;flex-shrink:0}
+.coming-body h3{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--slate);margin-bottom:4px}
+.coming-body p{font-size:12.5px;color:var(--mid);line-height:1.55}
+.resource-bank{background:var(--navy);border-radius:14px;padding:28px 32px;margin-top:48px}
+.resource-bank h3{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.resource-link{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#7AABCC;text-decoration:none;padding:8px 12px;border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:background 0.15s,color 0.15s;line-height:1.4}
+.resource-link:hover{background:rgba(0,180,216,0.1);color:var(--teal)}
+.resource-link span{opacity:0.4;font-size:11px}
+.footer{background:#060e17;padding:16px 48px;font-size:11.5px;color:#2A4A62;border-top:1px solid #0d1b2a;display:flex;justify-content:space-between}
+@media(max-width:700px){.hero{padding:36px 20px 32px}.jump-nav{padding:0 16px}.body-wrap{padding:36px 16px 60px}.nav-links{display:none}.cards-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Molecular Imaging</a>
+  <div class="nav-divider"></div>
+  <a href="../index.html" class="nav-logo">Learning<span>Nuclear</span>Medicine</a>
+  <ul class="nav-links">
+    <li><a href="cases/fdg.html">FDG</a></li>
+    <li><a href="cases/dotatate.html">DOTATATE</a></li>
+    <li><a href="cases/psma.html">PSMA</a></li>
+    <li><a href="cases/brain.html">Brain PET</a></li>
+    <li><a href="reporting-criteria.html" class="active">Reporting Criteria</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Quick Reference</div>
+  <h1>Reporting Criteria</h1>
+  <p class="hero-sub">Standardised scoring systems and response criteria used in PET reporting. Reference guides and visual graphics coming soon — organised by tracer and clinical application.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">Deauville</span>
+    <span class="hero-tag">PERCIST</span>
+    <span class="hero-tag">miPSMA / PROMISE</span>
+    <span class="hero-tag">Krenning Score</span>
+    <span class="hero-tag">RANO-NM</span>
+    <span class="hero-tag">Lugano Classification</span>
+  </div>
+</div>
+
+<div class="jump-nav">
+  <a href="#lymphoma">Lymphoma</a>
+  <a href="#solid-tumors">Solid Tumors</a>
+  <a href="#nets">NETs & DOTATATE</a>
+  <a href="#psma">PSMA</a>
+  <a href="#brain">Brain PET</a>
+  <a href="#thyroid">Thyroid</a>
+</div>
+
+<div class="body-wrap">
+
+  <div class="coming-banner">
+    <div class="coming-icon">📊</div>
+    <div class="coming-body">
+      <h3>Visual Reference Graphics Coming Soon</h3>
+      <p>Printable one-page graphics for each scoring system — Deauville 5-point scale, Krenning score, miPSMA, RANO-NM, and more. Designed to be kept at your workstation. Key guidelines and references are available now below.</p>
+    </div>
+  </div>
+
+  <!-- LYMPHOMA -->
+  <div class="criteria-section" id="lymphoma">
+    <div class="section-header">
+      <div class="section-icon">🎗️</div>
+      <div class="section-title">Lymphoma</div>
+    </div>
+    <p class="section-desc">FDG PET response assessment in lymphoma is governed by the Lugano Classification and Deauville 5-point scale. Liver is always the reference organ.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Deauville 5-Point Scale</div>
+        <div class="card-desc">Score 1–5 based on uptake relative to mediastinum (scores 1–2) and liver (scores 3–5). Score 4–5 = residual disease. Used for interim and end-of-treatment assessment.</div>
+        <div class="card-chips"><span class="chip">Mediastinum reference</span><span class="chip">Liver reference</span><span class="chip">Interim PET</span><span class="chip">End of treatment</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Lugano Classification</div>
+        <div class="card-desc">Replaces Cheson 2007. Integrates PET and CT response criteria. Defines complete metabolic response (CMR), partial metabolic response (PMR), and progressive metabolic disease (PMD).</div>
+        <div class="card-chips"><span class="chip">CMR</span><span class="chip">PMR</span><span class="chip">PMD</span><span class="chip">CT + PET integrated</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">Lugano Classification — Cheson et al, Journal of Clinical Oncology, 2014</div>
+        <div class="ref-source">The standard reference for lymphoma response criteria integrating PET and CT.</div>
+      </div>
+      <a href="https://ascopubs.org/doi/10.1200/JCO.2013.54.8800" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- SOLID TUMORS -->
+  <div class="criteria-section" id="solid-tumors">
+    <div class="section-header">
+      <div class="section-icon">🫁</div>
+      <div class="section-title">Solid Tumors</div>
+    </div>
+    <p class="section-desc">PERCIST defines metabolic response in solid tumors using SULpeak measurements. RECIST 1.1 remains the anatomic complement — both are often reported together.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">PERCIST 1.0</div>
+        <div class="card-desc">PET Response Criteria in Solid Tumors. Uses SULpeak (lean body mass corrected SUV) of the most active lesion. Defines complete, partial, stable, and progressive metabolic disease.</div>
+        <div class="card-chips"><span class="chip">SULpeak</span><span class="chip">CMR</span><span class="chip">PMR ≥30% decrease</span><span class="chip">PMD ≥30% increase</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">EORTC Criteria</div>
+        <div class="card-desc">Earlier metabolic response criteria using SUVmax. Still referenced in some trials. PERCIST is now preferred for most solid tumor applications.</div>
+        <div class="card-chips"><span class="chip">SUVmax based</span><span class="chip">Trial use</span><span class="chip">Historical reference</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">PERCIST — Wahl et al, Journal of Nuclear Medicine, 2009</div>
+        <div class="ref-source">The foundational paper defining metabolic response criteria for solid tumors.</div>
+      </div>
+      <a href="https://jnm.snmjournals.org/content/50/Suppl_1/122S" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- NETs -->
+  <div class="criteria-section" id="nets">
+    <div class="section-header">
+      <div class="section-icon">🟡</div>
+      <div class="section-title">NETs & DOTATATE</div>
+    </div>
+    <p class="section-desc">Krenning score quantifies DOTATATE uptake relative to liver at each disease site. All lesions must meet the threshold for PRRT eligibility — one low-avidity site excludes a patient.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Krenning Score</div>
+        <div class="card-desc">1 = very low (less than liver), 2 = low (equal to liver), 3 = moderate (greater than liver), 4 = high (greater than spleen). Score ≥3 at all sites required for PRRT eligibility. Always use liver as reference — never spleen.</div>
+        <div class="card-chips"><span class="chip">Score 1–4</span><span class="chip">Liver reference</span><span class="chip">PRRT eligibility</span><span class="chip">Per lesion scoring</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">RECIST for NETs</div>
+        <div class="card-desc">Anatomic response criteria used alongside DOTATATE for treatment monitoring. SUV changes on DOTATATE after PRRT correlate with clinical outcome.</div>
+        <div class="card-chips"><span class="chip">Post-PRRT monitoring</span><span class="chip">CT complement</span><span class="chip">SUV reduction</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">SNMMI Procedure Standard — DOTATATE PET/CT, 2020</div>
+        <div class="ref-source">Patient selection criteria and reporting standards for somatostatin receptor PET.</div>
+      </div>
+      <a href="https://jnm.snmjournals.org/content/61/10/1428" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- PSMA -->
+  <div class="criteria-section" id="psma">
+    <div class="section-header">
+      <div class="section-icon">🔵</div>
+      <div class="section-title">PSMA</div>
+    </div>
+    <p class="section-desc">miPSMA (PROMISE) scoring quantifies PSMA expression at each lesion site. Required for Lu-177 PSMA eligibility assessment — all lesions must score ≥3.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">miPSMA Score (PROMISE)</div>
+        <div class="card-desc">Molecular Imaging TNM (miTNM) system. miPSMA scores 1–5: 1 = very low, 2 = low, 3 = intermediate, 4 = high, 5 = very high. Score ≥3 at all lesion sites required for PLUVICTO eligibility per VISION trial criteria.</div>
+        <div class="card-chips"><span class="chip">Score 1–5</span><span class="chip">PLUVICTO eligibility</span><span class="chip">VISION criteria</span><span class="chip">Per lesion</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">miTNM Staging</div>
+        <div class="card-desc">Molecular imaging TNM system for prostate cancer. Classifies primary (miT), nodal (miN), and metastatic (miM) disease based on PSMA PET findings. Complements pathologic staging.</div>
+        <div class="card-chips"><span class="chip">miT staging</span><span class="chip">miN staging</span><span class="chip">miM staging</span><span class="chip">BCR localisation</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">PROMISE — Eiber et al, European Urology, 2018</div>
+        <div class="ref-source">The standardised framework for PSMA PET reporting and miPSMA scoring.</div>
+      </div>
+      <a href="https://www.europeanurology.com/article/S0302-2838(18)30524-4/fulltext" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- BRAIN PET -->
+  <div class="criteria-section" id="brain">
+    <div class="section-header">
+      <div class="section-icon">🧠</div>
+      <div class="section-title">Brain PET</div>
+    </div>
+    <p class="section-desc">Brain PET reporting criteria span multiple tracers and clinical applications — from amyloid visual reads to glioma response assessment.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Amyloid PET Visual Read</div>
+        <div class="card-desc">Binary positive/negative visual read. Positive = loss of grey-white matter contrast with cortical tracer retention. Posterior cingulate and precuneus are the earliest and most sensitive regions.</div>
+        <div class="card-chips"><span class="chip">Positive / Negative</span><span class="chip">Grey-white contrast</span><span class="chip">Posterior cingulate</span><span class="chip">Centiloid scale</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">RANO-NM — Brain Tumor Response</div>
+        <div class="card-desc">Response Assessment in Neuro-Oncology for Nuclear Medicine. Uses TBR (tumour-to-background ratio) thresholds on amino acid PET. Defines complete, partial, and progressive metabolic disease for glioma.</div>
+        <div class="card-chips"><span class="chip">TBRmax threshold</span><span class="chip">FET / FDOPA</span><span class="chip">Glioma response</span><span class="chip">Pseudoprogression</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Braak Staging — Tau PET</div>
+        <div class="card-desc">Six-stage framework describing the anatomical spread of tau pathology from medial temporal lobe (Braak I–II) through neocortex (Braak V–VI). Correlates with clinical severity.</div>
+        <div class="card-chips"><span class="chip">Braak I–VI</span><span class="chip">MTL spread</span><span class="chip">Flortaucipir</span><span class="chip">Clinical correlation</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">RANO-NM Criteria — Galldiks et al, Lancet Oncology, 2021</div>
+        <div class="ref-source">Standardised response criteria for amino acid PET in neuro-oncology.</div>
+      </div>
+      <a href="https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(21)00154-9/fulltext" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- THYROID -->
+  <div class="criteria-section" id="thyroid">
+    <div class="section-header">
+      <div class="section-icon">🦋</div>
+      <div class="section-title">Thyroid</div>
+    </div>
+    <p class="section-desc">Radioiodine therapy for differentiated thyroid cancer involves diagnostic ¹²³I scanning followed by ¹³¹I ablation. Response is assessed by thyroglobulin levels and post-therapy scan.</p>
+    <div class="cards-grid">
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">Post-Therapy ¹³¹I Scan Reporting</div>
+        <div class="card-desc">Whole body scan 5–8 days post RAI ablation. Documents remnant thyroid tissue, locoregional disease, and distant metastases. Correlated with stimulated thyroglobulin.</div>
+        <div class="card-chips"><span class="chip">¹³¹I RAI</span><span class="chip">Remnant ablation</span><span class="chip">Thyroglobulin</span><span class="chip">Post-therapy scan</span></div>
+      </div>
+      <div class="criteria-card">
+        <div class="card-label">Visual Guide Coming Soon</div>
+        <div class="card-title">ATA Risk Stratification</div>
+        <div class="card-desc">American Thyroid Association risk stratification guides RAI use and follow-up intensity. Low, intermediate, and high risk categories determine whether ablation is indicated.</div>
+        <div class="card-chips"><span class="chip">Low risk</span><span class="chip">Intermediate risk</span><span class="chip">High risk</span><span class="chip">RAI indication</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-body">
+        <div class="ref-label">Key Guideline</div>
+        <div class="ref-title">ATA Guidelines — Thyroid Cancer Management, 2015</div>
+        <div class="ref-source">American Thyroid Association management guidelines for adult patients with thyroid nodules and differentiated thyroid cancer.</div>
+      </div>
+      <a href="https://www.liebertpub.com/doi/10.1089/thy.2015.0020" target="_blank" class="ref-link">View →</a>
+    </div>
+  </div>
+
+  <!-- Resource bank -->
+  <div class="resource-bank">
+    <h3>All Key References</h3>
+    <div class="resource-grid">
+      <a href="https://ascopubs.org/doi/10.1200/JCO.2013.54.8800" target="_blank" class="resource-link">Lugano Classification — Cheson 2014 <span>↗</span></a>
+      <a href="https://jnm.snmjournals.org/content/50/Suppl_1/122S" target="_blank" class="resource-link">PERCIST — Wahl 2009 <span>↗</span></a>
+      <a href="https://jnm.snmjournals.org/content/61/10/1428" target="_blank" class="resource-link">SNMMI DOTATATE Procedure Standard <span>↗</span></a>
+      <a href="https://www.europeanurology.com/article/S0302-2838(18)30524-4/fulltext" target="_blank" class="resource-link">PROMISE — miPSMA Scoring <span>↗</span></a>
+      <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2107571" target="_blank" class="resource-link">VISION Trial — PSMA Eligibility Criteria <span>↗</span></a>
+      <a href="https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(21)00154-9/fulltext" target="_blank" class="resource-link">RANO-NM — Brain Tumor PET Response <span>↗</span></a>
+      <a href="https://jnm.snmjournals.org/content/61/6/800" target="_blank" class="resource-link">SNMMI Amyloid PET Appropriate Use <span>↗</span></a>
+      <a href="https://www.liebertpub.com/doi/10.1089/thy.2015.0020" target="_blank" class="resource-link">ATA Thyroid Cancer Guidelines 2015 <span>↗</span></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>LearningNuclearMedicine.com &nbsp;·&nbsp; Reporting Criteria</span>
+  <span>For educational use only &nbsp;·&nbsp; © 2025</span>
+</div>
+
+<script>
+const sections=document.querySelectorAll('.criteria-section');
+const jumpLinks=document.querySelectorAll('.jump-nav a');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){jumpLinks.forEach(l=>l.classList.remove('active'));const a=document.querySelector(`.jump-nav a[href="#${e.target.id}"]`);if(a)a.classList.add('active')}})},{threshold:0.25});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
