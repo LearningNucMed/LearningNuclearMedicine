@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
   --teal:   #00B4D8;
   --teal2:  #0096B7;
@@ -23,7 +23,7 @@
   --border: #E8E2D8;
   --teal:   #00B4D8;
 }
-
+ 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--white);
@@ -31,7 +31,7 @@ body {
   font-size: 15px;
   line-height: 1.6;
 }
-
+ 
 /* ── Nav ─────────────────────────────────────────────────── */
 .nav {
   background: var(--navy);
@@ -84,7 +84,7 @@ body {
 }
 .nav-links a:hover  { background: rgba(255,255,255,0.08); color: var(--white); }
 .nav-links a.active { color: var(--teal); background: rgba(0,180,216,0.1); }
-
+ 
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero {
   background: var(--navy);
@@ -101,7 +101,7 @@ body {
   right: -150px; top: -150px;
   pointer-events: none;
 }
-
+ 
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -123,7 +123,7 @@ body {
   animation: pulse 2.5s infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
+ 
 .hero h1 {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
@@ -133,7 +133,7 @@ body {
   margin-bottom: 16px;
   max-width: 660px;
 }
-
+ 
 .hero-sub {
   font-size: 15px;
   color: #7AABCC;
@@ -142,9 +142,9 @@ body {
   margin-bottom: 36px;
   max-width: 580px;
 }
-
+ 
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-
+ 
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -159,7 +159,7 @@ body {
   transition: background 0.15s, transform 0.15s;
 }
 .btn-primary:hover { background: #33CCEB; transform: translateY(-1px); }
-
+ 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -175,7 +175,7 @@ body {
   transition: border-color 0.15s, color 0.15s;
 }
 .btn-secondary:hover { border-color: var(--teal); color: var(--white); }
-
+ 
 .hero-stats {
   display: flex;
   gap: 40px;
@@ -197,14 +197,14 @@ body {
   text-transform: uppercase;
   color: #2A4A62;
 }
-
+ 
 /* ── Content ──────────────────────────────────────────────── */
 .content {
   max-width: 1100px;
   margin: 0 auto;
   padding: 60px 32px 80px;
 }
-
+ 
 .section-eyebrow {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
@@ -222,7 +222,7 @@ body {
 }
 .section-sub { font-size: 14px; color: var(--mid); margin-bottom: 28px; max-width: 600px; }
 .section-rule { height: 1px; background: var(--border); margin-bottom: 32px; }
-
+ 
 /* ── Tracer cards ─────────────────────────────────────────── */
 .tracers-grid {
   display: grid;
@@ -230,7 +230,7 @@ body {
   gap: 16px;
   margin-bottom: 48px;
 }
-
+ 
 .tracer-card {
   background: var(--white);
   border: 1.5px solid var(--border);
@@ -260,7 +260,7 @@ body {
   border-color: var(--teal);
 }
 .tracer-card:hover::before { opacity: 1; }
-
+ 
 .tracer-icon {
   width: 44px; height: 44px;
   border-radius: 12px;
@@ -312,7 +312,7 @@ body {
 }
 .tracer-arrow { color: var(--teal); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
 .tracer-card:hover .tracer-arrow { opacity: 1; transform: translateX(3px); }
-
+ 
 /* ── Theranostics banner ──────────────────────────────────── */
 .theranostics-banner {
   background: linear-gradient(135deg, #1a0f00 0%, #0D1B2A 100%);
@@ -371,7 +371,7 @@ body {
   color: #7AABCC;
 }
 .pair-arrow { color: var(--teal); font-size: 14px; }
-
+ 
 /* ── Signature: Brain ─────────────────────────────────────── */
 .brain-callout {
   background: var(--navy);
@@ -434,7 +434,7 @@ body {
   transition: background 0.15s;
 }
 .brain-btn:hover { background: rgba(0,180,216,0.22); }
-
+ 
 /* ── How it works ─────────────────────────────────────────── */
 .how-grid {
   display: grid;
@@ -457,7 +457,7 @@ body {
 }
 .how-title { font-size: 14px; font-weight: 600; color: var(--slate); margin-bottom: 6px; }
 .how-desc { font-size: 12.5px; color: var(--mid); line-height: 1.6; }
-
+ 
 /* ── Disclaimer + footer ──────────────────────────────────── */
 .disclaimer {
   background: var(--off);
@@ -483,7 +483,7 @@ body {
 }
 .footer a { color: #3D6178; text-decoration: none; }
 .footer a:hover { color: var(--teal); }
-
+ 
 @media (max-width: 780px) {
   .hero { padding: 48px 20px 40px; }
   .content { padding: 40px 16px 60px; }
@@ -494,7 +494,7 @@ body {
 </style>
 </head>
 <body>
-
+ 
 <!-- Nav -->
 <nav class="nav">
   <a href="../index.html" class="nav-back">← All Sections</a>
@@ -510,7 +510,7 @@ body {
     <li><a href="../about.html">About</a></li>
   </ul>
 </nav>
-
+ 
 <!-- Hero -->
 <div class="hero">
   <div class="hero-tag">
@@ -546,18 +546,18 @@ body {
     </div>
   </div>
 </div>
-
+ 
 <!-- Content -->
 <div class="content">
-
+ 
   <!-- Tracers -->
   <div class="section-eyebrow">Content Areas</div>
   <div class="section-title">By Tracer</div>
   <p class="section-sub">Molecular imaging is tracer-driven. Start with the mechanism, and the clinical applications follow.</p>
   <div class="section-rule"></div>
-
+ 
   <div class="tracers-grid">
-
+ 
     <a href="cases/fdg.html" class="tracer-card">
       <div class="tracer-icon">🔬</div>
       <div>
@@ -575,7 +575,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/dotatate.html" class="tracer-card">
       <div class="tracer-icon">🟡</div>
       <div>
@@ -593,7 +593,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/psma.html" class="tracer-card">
       <div class="tracer-icon">🔵</div>
       <div>
@@ -611,7 +611,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/brain.html" class="tracer-card">
       <div class="tracer-icon">🧠</div>
       <div>
@@ -629,7 +629,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/brain.html" class="tracer-card">
       <div class="tracer-icon">🔷</div>
       <div>
@@ -647,7 +647,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/brain.html" class="tracer-card">
       <div class="tracer-icon">💜</div>
       <div>
@@ -665,7 +665,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="cases/brain.html" class="tracer-card">
       <div class="tracer-icon">🦴</div>
       <div>
@@ -683,7 +683,7 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
     <a href="reporting-criteria.html" class="tracer-card">
       <div class="tracer-icon">📊</div>
       <div>
@@ -702,9 +702,9 @@ body {
         <span class="tracer-arrow">→</span>
       </div>
     </a>
-
+ 
   </div>
-
+ 
   <!-- Theranostics banner -->
   <div class="theranostics-banner">
     <div class="banner-eyebrow">Theranostics</div>
@@ -713,10 +713,10 @@ body {
     <div class="theranostics-pairs">
       <div class="pair-chip">⁶⁸Ga-DOTATATE <span class="pair-arrow">→</span> ¹⁷⁷Lu-DOTATATE (LUTATHERA)</div>
       <div class="pair-chip">PSMA PET <span class="pair-arrow">→</span> ¹⁷⁷Lu-PSMA-617 (PLUVICTO)</div>
-      <div class="pair-chip">¹²³I thyroid scan <span class="pair-arrow">→</span> ¹³¹I radioiodine ablation</div>
+      <div class="pair-chip">¹²³I THYROID SCAN <span class="pair-arrow">→</span> ¹³¹I RADIOACTIVE IODINE ABLATION </div>
     </div>
   </div>
-
+ 
   <!-- Brain signature -->
   <div class="brain-callout">
     <div>
@@ -726,13 +726,13 @@ body {
     </div>
     <a href="cases/brain.html" class="brain-btn">Brain PET Cases →</a>
   </div>
-
+ 
   <!-- How it works -->
   <div class="section-eyebrow">How Cases Work</div>
   <div class="section-title">The Case Format</div>
   <p class="section-sub">Every case follows the same four-step structure.</p>
   <div class="section-rule"></div>
-
+ 
   <div class="how-grid">
     <div class="how-card">
       <div class="how-num">01</div>
@@ -755,20 +755,20 @@ body {
       <div class="how-desc">3–5 high-yield takeaways, differential table, key references, and a downloadable PowerPoint for resident teaching sessions.</div>
     </div>
   </div>
-
+ 
   <div class="disclaimer">
     <strong>Disclaimer:</strong> These materials serve as general educational guidelines only.
     Institutions and providers may differ in their specific practices.
     Nothing here replaces proper medical training or clinical judgment.
   </div>
-
+ 
 </div>
-
+ 
 <!-- Footer -->
 <div class="footer">
   <span>LearningMolecularImaging.com &nbsp;·&nbsp; PET &amp; Molecular Imaging</span>
   <span>For educational use only &nbsp;·&nbsp; © 2025 &nbsp;·&nbsp; <a href="../about.html">About</a></span>
 </div>
-
+ 
 </body>
 </html>
