@@ -3,773 +3,483 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PET & Molecular Imaging | LearningMolecularImaging.com</title>
-<meta name="description" content="Case-based education in PET and molecular imaging — FDG, DOTATATE, PSMA, amyloid, tau, brain PET, and theranostics.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>LearningNuclearMedicine.com | LearningMolecularImaging.com</title>
+<meta name="description" content="Free case-based education in nuclear medicine and molecular imaging. Choose your path: General Nuclear Medicine or PET & Molecular Imaging.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 :root {
-  --teal:   #00B4D8;
-  --teal2:  #0096B7;
-  --teal3:  #006E8A;
-  --navy:   #0D1B2A;
-  --navy2:  #0a1520;
-  --white:  #FFFFFF;
-  --off:    #FEFAF4;
-  --slate:  #1E3A52;
-  --mid:    #5A7A8E;
-  --light:  #D1DDE6;
-  --border: #E8E2D8;
-  --teal:   #00B4D8;
+  --navy:    #0D1B2A;
+  --navy2:   #0a1520;
+  --white:   #FFFFFF;
+  --off:     #F4F8FB;
+  --slate:   #1E3A52;
+  --mid:     #5A7A8E;
+  --light:   #D1DDE6;
+  --border:  #E2ECF2;
+
+  /* Gen Nuc — amber/gold */
+  --gnm-primary:   #D97706;
+  --gnm-accent:    #F59E0B;
+  --gnm-glow:      rgba(245, 158, 11, 0.18);
+  --gnm-dim:       rgba(245, 158, 11, 0.06);
+  --gnm-text:      #D4A853;
+
+  /* Molecular Imaging — teal */
+  --mi-primary:    #0096B7;
+  --mi-accent:     #00B4D8;
+  --mi-glow:       rgba(0, 180, 216, 0.18);
+  --mi-dim:        rgba(0, 180, 216, 0.06);
+  --mi-text:       #7AABCC;
 }
- 
-body {
+
+html, body {
+  height: 100%;
   font-family: 'DM Sans', sans-serif;
-  background: var(--white);
-  color: var(--slate);
-  font-size: 15px;
-  line-height: 1.6;
+  background: var(--navy2);
+  color: var(--white);
+  overflow-x: hidden;
 }
- 
-/* ── Nav ─────────────────────────────────────────────────── */
-.nav {
-  background: var(--navy);
-  padding: 0 32px;
+
+/* ── Subtle animated background ────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 500px at 15% 50%, rgba(0,150,183,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 500px at 85% 50%, rgba(217,119,6,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Noise grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top bar ─────────────────────────────────────────────── */
+.topbar {
   display: flex;
   align-items: center;
-  height: 56px;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.nav-back {
+
+.topbar-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ── Hero header ─────────────────────────────────────────── */
+.hero-header {
+  text-align: center;
+  padding: 64px 24px 48px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-eyebrow {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.12em;
-  color: #3D6178;
-  text-decoration: none;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-right: 20px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: color 0.15s, background 0.15s;
-  white-space: nowrap;
+  justify-content: center;
+  gap: 14px;
 }
-.nav-back:hover { color: var(--teal); background: rgba(0,180,216,0.08); }
-.nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.08); margin-right: 20px; }
-.nav-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 15px;
-  color: var(--white);
-  text-decoration: none;
-  margin-right: 28px;
-  white-space: nowrap;
-}
-.nav-logo span { color: var(--teal); }
-.nav-links { display: flex; list-style: none; gap: 2px; flex: 1; }
-.nav-links a {
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
   display: block;
-  padding: 8px 13px;
-  font-size: 12.5px;
-  font-weight: 500;
-  color: #8BBFD4;
-  text-decoration: none;
-  border-radius: 6px;
-  white-space: nowrap;
-  transition: background 0.15s, color 0.15s;
+  width: 40px; height: 1px;
+  background: rgba(255,255,255,0.12);
 }
-.nav-links a:hover  { background: rgba(255,255,255,0.08); color: var(--white); }
-.nav-links a.active { color: var(--teal); background: rgba(0,180,216,0.1); }
- 
-/* ── Hero ─────────────────────────────────────────────────── */
-.hero {
-  background: var(--navy);
-  padding: 64px 64px 56px;
+
+.hero-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hero-header h1 .teal  { color: var(--mi-accent); }
+.hero-header h1 .amber { color: var(--gnm-accent); }
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.35);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Divider label ───────────────────────────────────────── */
+.choose-label {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 20px;
+  animation: fadeUp 0.7s 0.1s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* ── Portal cards ────────────────────────────────────────── */
+.portals {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  width: 100%;
+  animation: fadeUp 0.7s 0.15s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.portal-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 0 28px;
+  align-self: stretch;
+}
+
+/* ── Each portal ─────────────────────────────────────────── */
+.portal {
+  border-radius: 20px;
+  padding: 32px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   position: relative;
   overflow: hidden;
+  transition: background 0.3s;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  color: inherit;
 }
-.hero::before {
+
+.portal:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+/* Glow on hover */
+.portal-gnm::before {
   content: '';
   position: absolute;
-  width: 700px; height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,180,216,0.09) 0%, transparent 70%);
-  right: -150px; top: -150px;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, var(--gnm-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
   pointer-events: none;
+  border-radius: 20px;
 }
- 
-.hero-tag {
+.portal-gnm:hover::before { opacity: 1; }
+.portal-gnm:hover { border-color: rgba(245,158,11,0.2); }
+
+.portal-mi::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, var(--mi-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  border-radius: 20px;
+}
+.portal-mi:hover::before { opacity: 1; }
+.portal-mi:hover { border-color: rgba(245,158,11,0.2); }
+
+/* Domain badge */
+.domain-badge {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: rgba(0,180,216,0.1);
-  border: 1px solid rgba(0,180,216,0.25);
   border-radius: 100px;
   padding: 5px 14px 5px 10px;
   font-family: 'Space Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--teal);
-  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
 }
-.tag-dot {
+
+.portal-gnm .domain-badge {
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  color: var(--gnm-accent);
+}
+.portal-mi .domain-badge {
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  color: var(--mi-accent);
+}
+
+.badge-dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--teal);
-  animation: pulse 2.5s infinite;
+  flex-shrink: 0;
 }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
- 
-.hero h1 {
+.portal-gnm .badge-dot { background: var(--gnm-accent); animation: pulse 2.5s infinite; }
+.portal-mi  .badge-dot { background: var(--mi-accent);  animation: pulse 2.5s 1.25s infinite; }
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* Portal heading */
+.portal-heading {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   font-weight: 400;
-  color: var(--white);
   line-height: 1.15;
-  margin-bottom: 16px;
-  max-width: 660px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
- 
-.hero-sub {
-  font-size: 15px;
-  color: #7AABCC;
-  opacity: 0.75;
-  line-height: 1.7;
-  margin-bottom: 36px;
-  max-width: 580px;
+
+.portal-gnm .portal-heading { color: var(--white); }
+.portal-mi  .portal-heading { color: var(--white); }
+
+.portal-sub {
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
- 
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
- 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--teal);
-  color: var(--navy);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
-  transition: background 0.15s, transform 0.15s;
-}
-.btn-primary:hover { background: #33CCEB; transform: translateY(-1px); }
- 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: #7AABCC;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 14px;
-  text-decoration: none;
-  border: 1.5px solid rgba(0,180,216,0.2);
-  transition: border-color 0.15s, color 0.15s;
-}
-.btn-secondary:hover { border-color: var(--teal); color: var(--white); }
- 
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  flex-wrap: wrap;
-}
-.stat-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.7rem;
-  color: var(--teal);
-  line-height: 1;
-  margin-bottom: 2px;
-}
-.stat-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #2A4A62;
-}
- 
-/* ── Content ──────────────────────────────────────────────── */
-.content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 32px 80px;
-}
- 
-.section-eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--teal2);
-  margin-bottom: 8px;
-}
-.section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--slate);
-  margin-bottom: 8px;
-}
-.section-sub { font-size: 14px; color: var(--mid); margin-bottom: 28px; max-width: 600px; }
-.section-rule { height: 1px; background: var(--border); margin-bottom: 32px; }
- 
-/* ── Tracer cards ─────────────────────────────────────────── */
-.tracers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  margin-bottom: 48px;
-}
- 
-.tracer-card {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  text-decoration: none;
-  color: inherit;
+.portal-gnm .portal-sub { color: rgba(212,168,83,0.8); }
+.portal-mi  .portal-sub { color: rgba(212,168,83,0.6); }
+
+/* Topics list */
+.topics {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: all 0.2s;
+  gap: 8px;
+  margin-bottom: 32px;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
-.tracer-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--teal);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.tracer-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-  border-color: var(--teal);
-}
-.tracer-card:hover::before { opacity: 1; }
- 
-.tracer-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: rgba(0,180,216,0.07);
-  border: 1px solid rgba(0,180,216,0.18);
+
+.topic-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-.tracer-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--teal2);
-  margin-bottom: 2px;
-}
-.tracer-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
-  color: var(--slate);
-  line-height: 1.25;
-}
-.tracer-desc {
-  font-size: 12.5px;
-  color: var(--mid);
-  line-height: 1.65;
-  flex: 1;
-}
-.tracer-chips { display: flex; flex-wrap: wrap; gap: 5px; }
-.chip {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: rgba(0,180,216,0.07);
-  color: var(--teal2);
-  border: 1px solid rgba(0,180,216,0.2);
-}
-.tracer-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--mid);
-}
-.tracer-arrow { color: var(--teal); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
-.tracer-card:hover .tracer-arrow { opacity: 1; transform: translateX(3px); }
- 
-/* ── Theranostics banner ──────────────────────────────────── */
-.theranostics-banner {
-  background: linear-gradient(135deg, #1a0f00 0%, #0D1B2A 100%);
-  border-radius: 16px;
-  padding: 36px;
-  margin-bottom: 48px;
-  border: 1px solid rgba(0,180,216,0.15);
-  position: relative;
-  overflow: hidden;
-}
-.theranostics-banner::after {
-  content: '⚛';
-  position: absolute;
-  right: 36px; top: 50%;
-  transform: translateY(-50%);
-  font-size: 100px;
-  opacity: 0.05;
-  pointer-events: none;
-}
-.banner-eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 10px;
-}
-.theranostics-banner h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem;
-  color: var(--white);
-  margin-bottom: 10px;
-}
-.theranostics-banner p {
-  font-size: 14px;
-  color: #7AABCC;
-  opacity: 0.75;
-  line-height: 1.65;
-  max-width: 620px;
-  margin-bottom: 20px;
-}
-.theranostics-pairs {
-  display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
 }
-.pair-chip {
+
+.topic-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.portal-gnm .topic-dot { background: var(--gnm-accent); opacity: 0.6; }
+.portal-mi  .topic-dot { background: var(--mi-accent);  opacity: 0.6; }
+
+/* CTA row */
+.portal-cta {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(0,180,216,0.08);
-  border: 1px solid rgba(0,180,216,0.2);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 12.5px;
-  color: #7AABCC;
-}
-.pair-arrow { color: var(--teal); font-size: 14px; }
- 
-/* ── Signature: Brain ─────────────────────────────────────── */
-.brain-callout {
-  background: var(--navy);
-  border-radius: 16px;
-  padding: 32px 36px;
-  margin-bottom: 48px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: center;
-  border: 1px solid rgba(125,211,252,0.12);
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
-.brain-callout::after {
-  content: '🧠';
-  position: absolute;
-  right: 160px; top: 50%;
-  transform: translateY(-50%);
-  font-size: 70px;
-  opacity: 0.07;
-  pointer-events: none;
-}
-.brain-sig {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(0,180,216,0.1);
-  border: 1px solid rgba(0,180,216,0.25);
-  color: var(--teal);
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-.brain-callout h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.3rem;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-.brain-callout p { font-size: 13px; color: #7AABCC; line-height: 1.65; }
-.brain-btn {
+
+.cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0,180,216,0.12);
-  border: 1px solid rgba(0,180,216,0.25);
-  color: var(--teal);
   padding: 11px 22px;
   border-radius: 8px;
-  font-size: 13px;
   font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background 0.15s;
+  font-size: 14px;
+  transition: transform 0.15s, opacity 0.15s;
 }
-.brain-btn:hover { background: rgba(0,180,216,0.22); }
- 
-/* ── How it works ─────────────────────────────────────────── */
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 48px;
+.cta-btn:hover { transform: translateX(3px); }
+
+.portal-gnm .cta-btn {
+  background: var(--gnm-accent);
+  color: var(--navy);
 }
-.how-card {
-  background: var(--off);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 22px;
+.portal-mi .cta-btn {
+  background: var(--mi-accent);
+  color: var(--navy);
 }
-.how-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
-  color: var(--border);
-  line-height: 1;
-  margin-bottom: 10px;
+
+.cta-cases {
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.05em;
 }
-.how-title { font-size: 14px; font-weight: 600; color: var(--slate); margin-bottom: 6px; }
-.how-desc { font-size: 12.5px; color: var(--mid); line-height: 1.6; }
- 
-/* ── Disclaimer + footer ──────────────────────────────────── */
-.disclaimer {
-  background: var(--off);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 24px;
-  font-size: 12.5px;
-  color: var(--mid);
-  line-height: 1.65;
-  text-align: center;
-}
-.footer {
-  background: #060e17;
-  padding: 16px 48px;
-  font-size: 11.5px;
-  color: #2A4A62;
-  border-top: 1px solid #0d1b2a;
+
+/* ── Bottom strip ────────────────────────────────────────── */
+.bottom-strip {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 18px 48px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: 8px;
 }
-.footer a { color: #3D6178; text-decoration: none; }
-.footer a:hover { color: var(--teal); }
- 
-@media (max-width: 780px) {
-  .hero { padding: 48px 20px 40px; }
-  .content { padding: 40px 16px 60px; }
-  .how-grid { grid-template-columns: 1fr 1fr; }
-  .brain-callout { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+
+.disclaimer-strip {
+  font-size: 11px;
+  color: rgba(255,255,255,0.12);
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-header { animation: fadeUp 0.7s ease both; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 580px) {
+  .portals {
+    grid-template-columns: 1fr;
+    padding: 0 16px 48px;
+    gap: 16px;
+  }
+  .portal-divider { display: none; }
+  .portal { padding: 24px 20px; }
+  .topbar { padding: 16px 20px; }
+  .hero-header { padding: 40px 16px 28px; }
+  .bottom-strip { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
 </head>
 <body>
- 
-<!-- Nav -->
-<nav class="nav">
-  <a href="../index.html" class="nav-back">← All Sections</a>
-  <div class="nav-divider"></div>
-  <a href="index.html" class="nav-logo">PET &amp; <span>Molecular</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="how-to-read-a-pet.html">How to Read a PET</a></li>
-    <li><a href="tracers.html">Tracers</a></li>
-    <li><a href="normal-variants.html">Normal Variants</a></li>
-    <li><a href="cases/fdg.html">Cases</a></li>
-    <li><a href="reporting-criteria.html">Reporting Criteria</a></li>
-    <li><a href="../about.html">About</a></li>
-  </ul>
-</nav>
- 
-<!-- Hero -->
-<div class="hero">
-  <div class="hero-tag">
-    <span class="tag-dot"></span>
-    LearningMolecularImaging.com
+<div class="page">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-logo">LearningNuclearMedicine.com &nbsp;·&nbsp; LearningMolecularImaging.com</div>
   </div>
-  <h1>PET &amp; Molecular Imaging</h1>
-  <p class="hero-sub">
-    The frontier of diagnostic and theranostic imaging. Tracer-mechanism-driven,
-    biomarker-based, and increasingly central to oncology, neurology, and precision medicine.
-    Built for the way molecular imaging is actually practiced.
-  </p>
-  <div class="hero-ctas">
-    <a href="cases/fdg.html" class="btn-primary">Browse Cases →</a>
-    <a href="how-to-read-a-pet.html" class="btn-secondary">How to Read a PET</a>
+
+  <!-- Hero -->
+  <div class="hero-header">
+    <div class="hero-eyebrow">Free · Case-Based · Evidence-Based</div>
+    <h1>Learning<br><span class="amber">Nuclear Medicine</span> &amp; <span class="teal">Molecular Imaging</span></h1>
+    <p class="hero-sub">One site. Two paths. Real cases, structured teaching, and evidence-based content for the full spectrum of nuclear medicine.</p>
   </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">PET</div>
-      <div class="stat-label">Primary modality</div>
-    </div>
-    <div>
-      <div class="stat-num">8+</div>
-      <div class="stat-label">Tracers covered</div>
-    </div>
-    <div>
-      <div class="stat-num">Theranostics</div>
-      <div class="stat-label">Including PRRT &amp; PSMA</div>
-    </div>
-    <div>
-      <div class="stat-num">Free</div>
-      <div class="stat-label">Always</div>
-    </div>
-  </div>
-</div>
- 
-<!-- Content -->
-<div class="content">
- 
-  <!-- Tracers -->
-  <div class="section-eyebrow">Content Areas</div>
-  <div class="section-title">By Tracer</div>
-  <p class="section-sub">Molecular imaging is tracer-driven. Start with the mechanism, and the clinical applications follow.</p>
-  <div class="section-rule"></div>
- 
-  <div class="tracers-grid">
- 
-    <a href="cases/fdg.html" class="tracer-card">
-      <div class="tracer-icon">🔬</div>
-      <div>
-        <div class="tracer-label">Oncology · Infection · Brain</div>
-        <div class="tracer-name">FDG PET/CT</div>
+
+  <div class="choose-label">Choose your path</div>
+
+  <!-- Portal cards -->
+  <div class="portals">
+
+    <!-- ── General Nuclear Medicine ── -->
+    <a class="portal portal-gnm" href="nuc-med/index.html">
+
+      <div class="domain-badge">
+        <span class="badge-dot"></span>
+        LearningNuclearMedicine.com
       </div>
-      <div class="tracer-desc">The workhorse. Lymphoma staging and response, lung cancer, colorectal, breast, brown fat, thymic rebound, infection and inflammation, cardiac sarcoid.</div>
-      <div class="tracer-chips">
-        <span class="chip">¹⁸F-FDG</span>
-        <span class="chip">Deauville</span>
-        <span class="chip">PERCIST</span>
+
+      <div class="portal-heading">General<br>Nuclear Medicine</div>
+
+      <p class="portal-sub">
+        The fundamentals every radiologist and nuclear medicine physician needs. 
+        Procedure-based, organ-based, boards-relevant.
+      </p>
+
+      <div class="topics">
+        <div class="topic-item"><span class="topic-dot"></span>Bone scintigraphy &amp; NaF PET</div>
+        <div class="topic-item"><span class="topic-dot"></span>Thyroid — I-123, I-131, RAI</div>
+        <div class="topic-item"><span class="topic-dot"></span>Cardiac SPECT &amp; MPI</div>
+        <div class="topic-item"><span class="topic-dot"></span>Renal, hepatobiliary, V/Q</div>
+        <div class="topic-item"><span class="topic-dot"></span>MIBG &amp; infection imaging</div>
       </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
+
+      <div class="portal-cta">
+        <div class="cta-btn">Enter &nbsp;→</div>
+        <div class="cta-cases">Boards-focused · SPECT · Procedures</div>
       </div>
-    </a>
- 
-    <a href="cases/dotatate.html" class="tracer-card">
-      <div class="tracer-icon">🟡</div>
-      <div>
-        <div class="tracer-label">Neuroendocrine · Theranostics</div>
-        <div class="tracer-name">DOTATATE PET/CT</div>
-      </div>
-      <div class="tracer-desc">NETs, paraganglioma, carcinoid, Krenning scoring for PRRT eligibility, before/after Lu-177 DOTATATE therapy, the flip-flop phenomenon in G3 disease.</div>
-      <div class="tracer-chips">
-        <span class="chip">⁶⁸Ga-DOTATATE</span>
-        <span class="chip">Krenning score</span>
-        <span class="chip">PRRT</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
-    </a>
- 
-    <a href="cases/psma.html" class="tracer-card">
-      <div class="tracer-icon">🔵</div>
-      <div>
-        <div class="tracer-label">Prostate · Theranostics</div>
-        <div class="tracer-name">PSMA PET/CT</div>
-      </div>
-      <div class="tracer-desc">Staging, biochemical recurrence localization, miPSMA scoring for Lu-177 PSMA eligibility, PSMA-negative disease and neuroendocrine differentiation.</div>
-      <div class="tracer-chips">
-        <span class="chip">¹⁸F-DCFPyL</span>
-        <span class="chip">⁶⁸Ga-PSMA-11</span>
-        <span class="chip">miPSMA</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
-    </a>
- 
-    <a href="cases/brain.html" class="tracer-card">
-      <div class="tracer-icon">🧠</div>
-      <div>
-        <div class="tracer-label">Neurology · Dementia</div>
-        <div class="tracer-name">Amyloid PET</div>
-      </div>
-      <div class="tracer-desc">MCI and Alzheimer's workup, A/T/N biomarker framework, visual read vs quantitative SUVR, centiloid scale, clinical trial eligibility and anti-amyloid therapy monitoring.</div>
-      <div class="tracer-chips">
-        <span class="chip">Florbetapir</span>
-        <span class="chip">Florbetaben</span>
-        <span class="chip">A/T/N</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
-    </a>
- 
-    <a href="cases/brain.html" class="tracer-card">
-      <div class="tracer-icon">🔷</div>
-      <div>
-        <div class="tracer-label">Neurology · Alzheimer's</div>
-        <div class="tracer-name">Tau PET</div>
-      </div>
-      <div class="tracer-desc">Flortaucipir and Braak staging, MTL-predominant vs neocortical spread, correlation with clinical severity, comparison with amyloid burden, non-AD tauopathies.</div>
-      <div class="tracer-chips">
-        <span class="chip">Flortaucipir</span>
-        <span class="chip">MK-6240</span>
-        <span class="chip">Braak stage</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
-    </a>
- 
-    <a href="cases/brain.html" class="tracer-card">
-      <div class="tracer-icon">💜</div>
-      <div>
-        <div class="tracer-label">Neuro-oncology</div>
-        <div class="tracer-name">FET &amp; FDOPA PET</div>
-      </div>
-      <div class="tracer-desc">Glioma recurrence vs radiation necrosis, treatment planning, pseudoprogression, Parkinsonism differential with FDOPA striatal patterns, RANO-NM criteria.</div>
-      <div class="tracer-chips">
-        <span class="chip">¹⁸F-FET</span>
-        <span class="chip">¹⁸F-FDOPA</span>
-        <span class="chip">RANO-NM</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
-    </a>
- 
-    <a href="cases/cardiac.html" class="tracer-card">
-      <div class="tracer-icon">❤️</div>
-      <div>
-        <div class="tracer-label">Perfusion · Sarcoidosis · Amyloidosis</div>
-        <div class="tracer-name">Cardiac PET</div>
-      </div>
-      <div class="tracer-desc">Myocardial perfusion with Rb-82 and N-13 ammonia, FDG viability and sarcoidosis assessment, cardiac amyloidosis with PYP. Quantitative flow reserve and perfusion-metabolism mismatch patterns.</div>
-      <div class="tracer-chips">
-        <span class="chip">Rb-82</span>
-        <span class="chip">FDG viability</span>
-        <span class="chip">Sarcoidosis</span>
-        <span class="chip">PYP</span>
-      </div>
-      <div class="tracer-footer">
-        <span>Cases coming soon</span>
-        <span class="tracer-arrow">→</span>
-      </div>
+
     </a>
 
-    <a href="reporting-criteria.html" class="tracer-card">
-      <div class="tracer-icon">📊</div>
-      <div>
-        <div class="tracer-label">Quick Reference</div>
-        <div class="tracer-name">Reporting Criteria</div>
+    <div class="portal-divider"></div>
+
+    <!-- ── Molecular Imaging ── -->
+    <a class="portal portal-mi" href="molecular/index.html">
+
+      <div class="domain-badge">
+        <span class="badge-dot"></span>
+        LearningMolecularImaging.com
       </div>
-      <div class="tracer-desc">Visual graphics for Deauville, PERCIST, PROMISE/miPSMA, Krenning score, Perugini grading, and RANO-NM. Print them. Put them on your workstation.</div>
-      <div class="tracer-chips">
-        <span class="chip">Deauville</span>
-        <span class="chip">PERCIST</span>
-        <span class="chip">PROMISE</span>
-        <span class="chip">RANO-NM</span>
+
+      <div class="portal-heading">PET &amp; Molecular<br>Imaging</div>
+
+      <p class="portal-sub">
+        The frontier of diagnostic and theranostic imaging. Tracer-driven, 
+        biomarker-based, and increasingly central to oncology and neurology.
+      </p>
+
+      <div class="topics">
+        <div class="topic-item"><span class="topic-dot"></span>FDG PET/CT — oncology &amp; infection</div>
+        <div class="topic-item"><span class="topic-dot"></span>DOTATATE &amp; PRRT theranostics</div>
+        <div class="topic-item"><span class="topic-dot"></span>PSMA &amp; Lu-177 prostate therapy</div>
+        <div class="topic-item"><span class="topic-dot"></span>Amyloid, Tau &amp; Brain PET / A/T/N</div>
+        <div class="topic-item"><span class="topic-dot"></span>FET, FDOPA — neuro-oncology</div>
+        <div class="topic-item"><span class="topic-dot"></span>Reporting criteria &amp; response assessment</div>
       </div>
-      <div class="tracer-footer">
-        <span>View graphics →</span>
-        <span class="tracer-arrow">→</span>
+
+      <div class="portal-cta">
+        <div class="cta-btn">Enter &nbsp;→</div>
+        <div class="cta-cases">PET · Theranostics · Brain Imaging</div>
       </div>
+
     </a>
- 
+
   </div>
- 
-  <!-- Theranostics banner -->
-  <div class="theranostics-banner">
-    <div class="banner-eyebrow">Theranostics</div>
-    <h3>Diagnose with the Same Target You Treat</h3>
-    <p>Theranostics is the defining shift in nuclear medicine — the same molecular target identified on a diagnostic scan is used to deliver targeted radionuclide therapy. Cases include before/after pairs showing restaging after PRRT and Lu-177 PSMA.</p>
-    <div class="theranostics-pairs">
-      <div class="pair-chip">⁶⁸Ga-DOTATATE <span class="pair-arrow">→</span> ¹⁷⁷Lu-DOTATATE (LUTATHERA)</div>
-      <div class="pair-chip">PSMA PET <span class="pair-arrow">→</span> ¹⁷⁷Lu-PSMA-617 (PLUVICTO)</div>
-      <div class="pair-chip">¹²³I THYROID SCAN <span class="pair-arrow">→</span> ¹³¹I RADIOACTIVE IODINE ABLATION </div>
-    </div>
+
+  <!-- Bottom strip -->
+  <div class="bottom-strip">
+    <div class="disclaimer-strip">For educational use only · Not for clinical decision-making · © 2025</div>
   </div>
- 
-  <!-- Brain signature -->
-  <div class="brain-callout">
-    <div>
-      
-      <h3>Brain &amp; Neurology PET</h3>
-      <p>Case-based education in brain PET — glioma with FET/FDOPA, dementia workup with the A/T/N biomarker framework, amyloid and tau imaging, pseudoprogression, and PET/MRI integration. Brain SPECT cases are cross-linked from the general nuclear medicine wing.</p>
-    </div>
-    <a href="cases/brain.html" class="brain-btn">Brain PET Cases →</a>
-  </div>
- 
-  <!-- How it works -->
-  <div class="section-eyebrow">How Cases Work</div>
-  <div class="section-title">The Case Format</div>
-  <p class="section-sub">Every case follows the same four-step structure.</p>
-  <div class="section-rule"></div>
- 
-  <div class="how-grid">
-    <div class="how-card">
-      <div class="how-num">01</div>
-      <div class="how-title">Clinical History</div>
-      <div class="how-desc">Patient demographics, relevant oncologic or neurologic history, and the clinical question — staging, restaging, theranostic eligibility, or response assessment.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">02</div>
-      <div class="how-title">Blinded Images</div>
-      <div class="how-desc">MIP, axial PET, and fused images without the answer. Full DICOM stack available via PACSbin link. Form your impression first.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">03</div>
-      <div class="how-title">Findings &amp; Diagnosis</div>
-      <div class="how-desc">Structured findings with SUVmax, annotated key image, and a reveal-on-click diagnosis with tracer mechanism and clinical significance.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">04</div>
-      <div class="how-title">Teaching Pearls</div>
-      <div class="how-desc">3–5 high-yield takeaways, differential table, key references, and a downloadable PowerPoint for resident teaching sessions.</div>
-    </div>
-  </div>
- 
-  <div class="disclaimer">
-    <strong>Disclaimer:</strong> These materials serve as general educational guidelines only.
-    Institutions and providers may differ in their specific practices.
-    Nothing here replaces proper medical training or clinical judgment.
-  </div>
- 
-</div>
- 
-<!-- Footer -->
-<div class="footer">
-  <span>LearningMolecularImaging.com &nbsp;·&nbsp; PET &amp; Molecular Imaging</span>
-  <span>For educational use only &nbsp;·&nbsp; © 2025 &nbsp;·&nbsp; <a href="../about.html">About</a></span>
-</div>
- 
+
+</div><!-- /page -->
 </body>
 </html>
